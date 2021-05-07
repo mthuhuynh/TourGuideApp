@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/ic_motorcycle" />
+            tools:srcCompat="@drawable/ic_baseline_hotel_24" />
 
         <TextView
             android:id="@+id/location_name_text_item_view"
@@ -34,7 +34,7 @@
             app:layout_constraintEnd_toEndOf="@id/location_image_item_view"
             app:layout_constraintStart_toStartOf="@id/location_image_item_view"
             app:layout_constraintTop_toBottomOf="@id/location_image_item_view"
-            tools:text="Motorcycle" />
+            tools:text="Hotel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
