@@ -57,7 +57,7 @@
     <string name="hotel_8_name">Bluebell Hotel</string>
 
     <string name="hotel_1_detail">67 Thuốc Bắc, Hàng Bồ, Hàng Bồ, Quận Hoàn Kiếm</string>
-    <string name="hotel_2_detail">13-15 Luong Ngoc Quyen, Hang Buom, Hoan Kiem, Hàng Buồm</string>
+    <string name="hotel_2_detail">13–15 Luong Ngoc Quyen, Hang Buom, Hoan Kiem, Hàng Buồm</string>
     <string name="hotel_3_detail">46 Ấu Triệu, Phường Hàng Trống, Quận Hoàn Kiếm, Hà Nội</string>
     <string name="hotel_4_detail">11 Bát Đàn, Quận Hoàn Kiếm, Hàng Bồ, Quận Hoàn Kiếm</string>
     <string name="hotel_5_detail">Thôn Ngọc Quang, Xã Ngọc Thanh, Vĩnh Phúc, Phúc Yên</string>
@@ -84,4 +84,36 @@
     <string name="bus_7_detail">BX. Giáp Bát - Phú Minh (Phú Xuyên)</string>
     <string name="bus_8_detail">Cầu Giấy - Nội Bài</string>
     <string name="bus_9_detail">Long Biên - Đông Mỹ</string>
+
+    <string name="atm_hcm_1_name">ATM SCB - Quận 1</string>
+    <string name="atm_hcm_2_name">ATM Ngân hàng BIDV</string>
+    <string name="atm_hcm_3_name">ATM VIB</string>
+
+    <string name="hospital_hcm_1_name">Bệnh Viện Mắt Sài Gòn</string>
+    <string name="hospital_hcm_2_name">Bệnh Viện Nhi Đồng 2</string>
+    <string name="hospital_hcm_3_name">Bệnh Viện Phụ Sản Từ Dũ</string>
+
+    <string name="hotel_hcm_1_name">Khách sạn Sheraton Sài Gòn</string>
+    <string name="hotel_hcm_2_name">Khách sạn Park Hyatt Sài Gòn</string>
+    <string name="hotel_hcm_3_name">New World Saigon Hotel</string>
+
+    <string name="bus_hcm_1_name">Tuyến 08</string>
+    <string name="bus_hcm_2_name">Tuyến 98</string>
+    <string name="bus_hcm_3_name">Tuyến 53</string>
+
+    <string name="atm_hcm_1_detail">Địa chỉ: 64-66-68 Hai Bà Trưng, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh</string>
+    <string name="atm_hcm_2_detail">Địa chỉ: 284 Cống Quỳnh, Phường Phạm Ngũ Lão, Quận 1, Thành phố Hồ Chí Minh</string>
+    <string name="atm_hcm_3_detail">Địa chỉ: 343 Phạm Ngũ Lão, Phường Phạm Ngũ Lão, Quận 1, Thành phố Hồ Chí Minh 700000</string>
+
+    <string name="hospital_hcm_1_detail">100 Lê Thị Riêng, Phường Bến Thành, Quận 1, Hồ Chí Minh</string>
+    <string name="hospital_hcm_2_detail">14 Lý Tự Trọng, Phường Bến Nghé, Quận 1, Hồ Chí Minh</string>
+    <string name="hospital_hcm_3_detail">284 Cống Quỳnh, Phường Phạm Ngũ Lão, Quận 1, Hồ Chí Minh</string>
+
+    <string name="hotel_hcm_1_detail">Địa chỉ: 88 Đồng Khởi, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh</string>
+    <string name="hotel_hcm_2_detail">Địa chỉ: 2 Lam Son Square, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh 700000</string>
+    <string name="hotel_hcm_3_detail">Địa chỉ: 76 Lê Lai, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh 700000</string>
+
+    <string name="bus_hcm_1_detail">Bến Xe Buýt Quận 8 - Đại học Quốc Gia</string>
+    <string name="bus_hcm_2_detail">Đại học Nông Lâm - Trường THPT Hiệp Bình</string>
+    <string name="bus_hcm_3_detail">Lê Hồng Phong - Đại học Quốc gia</string>
 </resources>

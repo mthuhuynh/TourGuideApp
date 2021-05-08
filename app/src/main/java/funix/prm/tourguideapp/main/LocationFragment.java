@@ -29,7 +29,7 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
 
     private RecyclerView mRecyclerView;
     private LocationAdapter mLocationAdapter;
-    String[] country = {"India", "USA", "China", "Japan", "Other"};
+    String[] city = {"HCM", "HN"};
 
 
     public LocationFragment() {
@@ -54,7 +54,7 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
         spin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
-        ArrayAdapter aa = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, country);
+        ArrayAdapter aa = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, city);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
@@ -75,6 +75,9 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
     //Performing action onItemSelected and onNothing selected
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+        Toast.makeText(getContext(), city[position], Toast.LENGTH_LONG).show();
+        LocationFragmentViewModel viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
+        viewModel.setCity(city[position]);
 
     }
     @Override

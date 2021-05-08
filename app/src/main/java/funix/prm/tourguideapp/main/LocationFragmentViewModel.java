@@ -5,7 +5,6 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +15,11 @@ import funix.prm.tourguideapp.R;
 public class LocationFragmentViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Location>> mLocationData;
+    private MutableLiveData<String> mCity;
 
     public LocationFragmentViewModel(@NonNull Application application) {
         super(application);
+        mCity = new MutableLiveData<String>();
     }
 
     // Get Location list of data return type MutableLiveData
@@ -28,6 +29,15 @@ public class LocationFragmentViewModel extends AndroidViewModel {
         return mLocationData;
     }
 
+    public void setCity(String city) {
+        ;
+        mCity.postValue(city);
+
+    }
+
+    public MutableLiveData<String> getCity() {
+        return mCity;
+    }
     /*
      * Hardcoded Location data which shows in our list.
      *
@@ -42,5 +52,7 @@ public class LocationFragmentViewModel extends AndroidViewModel {
         locationList.add(new Location(R.drawable.ic_baseline_local_hospital_24, getApplication().getString(R.string.hospital)));
         mLocationData.postValue(locationList);
     }
+
+
 }
 

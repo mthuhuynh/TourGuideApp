@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Bundle;
 import android.content.Context;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,9 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import funix.prm.tourguideapp.R;
 import funix.prm.tourguideapp.detail.dummy.DummyContent;
+import funix.prm.tourguideapp.main.LocationFragmentViewModel;
 import funix.prm.tourguideapp.model.Location;
 
 import java.util.Objects;
@@ -33,6 +36,7 @@ public class LocationDetailFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+    private String cityLocation = "HCM";
 
     public LocationDetailFragment() {
         // Required empty public constructor
@@ -67,32 +71,60 @@ public class LocationDetailFragment extends Fragment {
         // do the parsing in the DummyContent: dc.doParsing()
 
         Application application = requireActivity().getApplication();
+
+        LocationFragmentViewModel viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
+        viewModel.getCity().observe(requireActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String city) {
+                Toast.makeText(this,"city adapter input" + city, Toast.LENGTH_LONG).show();
+                cityLocation = city;
+            }
+        });
+
         Location location = LocationDetailFragmentArgs.fromBundle(requireArguments()).getDetailFragmentArgs();
         DetailFragmentViewModelFactory factory = new  DetailFragmentViewModelFactory(application, location);
-        DetailFragmentViewModel viewModel = ViewModelProviders.of(this, factory).get(DetailFragmentViewModel.class);
+        DetailFragmentViewModel dViewModel = ViewModelProviders.of(this, factory).get(DetailFragmentViewModel.class);
 
-        viewModel.getSelectedLocation().observe(getViewLifecycleOwner(), new Observer<Location>() {
+        dViewModel.getSelectedLocation().observe(getViewLifecycleOwner(), new Observer<Location>() {
             @Override
             public void onChanged(Location location) {
                 locationImageView.setImageResource(location.getLocationImage());
                 locationNameTextView.setText(location.getLocationName());
 
+
                 //list
                 // Set the adapter
                 RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
-                switch (location.getLocationName()) {
-                    case "ATM":
-                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM));
-                        break;
-                    case "Bus":
-                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES));
-                        break;
-                    case "Hotel":
-                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS));
-                        break;
-                    case "Hospital":
-                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS));
-                        break;
+                if(cityLocation.equals("HN")) {
+                    switch (location.getLocationName()) {
+                        case "ATM":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM));
+                            break;
+                        case "Bus":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES));
+                            break;
+                        case "Hotel":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS));
+                            break;
+                        case "Hospital":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS));
+                            break;
+                    }
+                } else if(cityLocation.equals("HCM")){
+                    switch (location.getLocationName()) {
+                        case "ATM":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM_HCM));
+                            break;
+                        case "Bus":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES_HCM));
+                            break;
+                        case "Hotel":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS_HCM));
+                            break;
+                        case "Hospital":
+                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS_HCM));
+                            break;
+                    }
                 }
             }
         });

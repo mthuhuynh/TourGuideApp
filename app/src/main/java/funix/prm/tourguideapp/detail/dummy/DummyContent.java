@@ -24,6 +24,11 @@ public class DummyContent {
     public static final List<DummyItem> HOSPITALS = new ArrayList<>();
     public static final List<DummyItem> BUSES = new ArrayList<>();
 
+    public static final List<DummyItem> ATM_HCM = new ArrayList<>();
+    public static final List<DummyItem> HOTELS_HCM = new ArrayList<>();
+    public static final List<DummyItem> HOSPITALS_HCM = new ArrayList<>();
+    public static final List<DummyItem> BUSES_HCM = new ArrayList<>();
+
     /**
      * A map of sample (dummy) items, by ID.
      */
@@ -76,6 +81,22 @@ public class DummyContent {
         BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_7_name), mContext.getString(R.string.bus_7_detail)));
         BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_8_name), mContext.getString(R.string.bus_8_detail)));
         BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_9_name), mContext.getString(R.string.bus_9_detail)));
+
+        ATM_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_hcm_1_name), mContext.getString(R.string.atm_hcm_1_detail)));
+        ATM_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_hcm_2_name), mContext.getString(R.string.atm_hcm_2_detail)));
+        ATM_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_hcm_3_name), mContext.getString(R.string.atm_hcm_3_detail)));
+
+        HOSPITALS_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_hcm_1_name), mContext.getString(R.string.hospital_hcm_1_detail)));
+        HOSPITALS_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_hcm_2_name), mContext.getString(R.string.hospital_hcm_2_detail)));
+        HOSPITALS_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_hcm_3_name), mContext.getString(R.string.hospital_hcm_3_detail)));
+
+        HOTELS_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_hcm_1_name), mContext.getString(R.string.hotel_hcm_1_detail)));
+        HOTELS_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_hcm_2_name), mContext.getString(R.string.hotel_hcm_2_detail)));
+        HOTELS_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_hcm_3_name), mContext.getString(R.string.hotel_hcm_3_detail)));
+
+        BUSES_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_hcm_1_name), mContext.getString(R.string.bus_hcm_1_detail)));
+        BUSES_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_hcm_2_name), mContext.getString(R.string.bus_hcm_2_detail)));
+        BUSES_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_hcm_3_name), mContext.getString(R.string.bus_hcm_3_detail)));
     }
 
 
