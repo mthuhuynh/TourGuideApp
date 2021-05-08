@@ -63,6 +63,8 @@ public class LocationDetailFragment extends Fragment {
 
         final ImageView locationImageView = view.findViewById(R.id.detail_location_image_view);
         final TextView locationNameTextView = view.findViewById(R.id.detail_location_name_text_view);
+        DummyContent dc = new DummyContent(getActivity());
+        // do the parsing in the DummyContent: dc.doParsing()
 
         Application application = requireActivity().getApplication();
         Location location = LocationDetailFragmentArgs.fromBundle(requireArguments()).getDetailFragmentArgs();
@@ -74,21 +76,27 @@ public class LocationDetailFragment extends Fragment {
             public void onChanged(Location location) {
                 locationImageView.setImageResource(location.getLocationImage());
                 locationNameTextView.setText(location.getLocationName());
+
+                //list
+                // Set the adapter
+                RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+                switch (location.getLocationName()) {
+                    case "ATM":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM));
+                        break;
+                    case "Bus":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES));
+                        break;
+                    case "Hotel":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS));
+                        break;
+                    case "Hospital":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS));
+                        break;
+                }
             }
         });
 
-        //list
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ITEMS));
-        }
 
         return view;
     }

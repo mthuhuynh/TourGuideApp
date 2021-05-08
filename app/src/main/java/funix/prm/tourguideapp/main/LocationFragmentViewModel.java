@@ -1,5 +1,9 @@
 package funix.prm.tourguideapp.main;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -9,9 +13,13 @@ import java.util.List;
 import funix.prm.tourguideapp.model.Location;
 import funix.prm.tourguideapp.R;
 
-public class LocationFragmentViewModel extends ViewModel {
+public class LocationFragmentViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Location>> mLocationData;
+
+    public LocationFragmentViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     // Get Location list of data return type MutableLiveData
     MutableLiveData<List<Location>> getLocationData() {
@@ -28,10 +36,10 @@ public class LocationFragmentViewModel extends ViewModel {
      */
     private void loadAllLocations() {
         List<Location> locationList = new ArrayList<>();
-        locationList.add(new Location(R.drawable.ic_baseline_directions_bus_24, "Bus"));
-        locationList.add(new Location(R.drawable.ic_baseline_hotel_24, "Hotel"));
-        locationList.add(new Location(R.drawable.ic_baseline_local_atm_24, "ATM"));
-        locationList.add(new Location(R.drawable.ic_baseline_local_hospital_24, "Hospital"));
+        locationList.add(new Location(R.drawable.ic_baseline_directions_bus_24, getApplication().getString(R.string.bus)));
+        locationList.add(new Location(R.drawable.ic_baseline_hotel_24, getApplication().getString(R.string.hotel)));
+        locationList.add(new Location(R.drawable.ic_baseline_local_atm_24, getApplication().getString(R.string.atm)));
+        locationList.add(new Location(R.drawable.ic_baseline_local_hospital_24, getApplication().getString(R.string.hospital)));
         mLocationData.postValue(locationList);
     }
 }

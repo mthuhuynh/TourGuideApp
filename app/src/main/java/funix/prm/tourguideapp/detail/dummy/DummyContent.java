@@ -1,9 +1,13 @@
 package funix.prm.tourguideapp.detail.dummy;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import funix.prm.tourguideapp.R;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -12,43 +16,81 @@ import java.util.Map;
  * TODO: Replace all uses of this class before publishing your app.
  */
 public class DummyContent {
-
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    public static final List<DummyItem> ATM = new ArrayList<>();
+    public static final List<DummyItem> HOTELS = new ArrayList<>();
+    public static final List<DummyItem> HOSPITALS = new ArrayList<>();
+    public static final List<DummyItem> BUSES = new ArrayList<>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
+    private Context mContext;
 
-    private static final int COUNT = 25;
+    public DummyContent(Context context) {
+        mContext = context;
+        addStaticItem();
+    }
+    public void addStaticItem(){
 
-    static {
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createDummyItem(i));
-        }
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_1_name), mContext.getString(R.string.atm_1_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_2_name), mContext.getString(R.string.atm_2_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_3_name), mContext.getString(R.string.atm_3_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_4_name), mContext.getString(R.string.atm_4_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_5_name), mContext.getString(R.string.atm_5_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_6_name), mContext.getString(R.string.atm_6_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_7_name), mContext.getString(R.string.atm_7_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_8_name), mContext.getString(R.string.atm_8_detail)));
+        ATM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.atm_9_name), mContext.getString(R.string.atm_9_detail)));
+
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_1_name), mContext.getString(R.string.hospital_1_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_2_name), mContext.getString(R.string.hospital_2_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_3_name), mContext.getString(R.string.hospital_3_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_4_name), mContext.getString(R.string.hospital_4_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_5_name), mContext.getString(R.string.hospital_5_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_6_name), mContext.getString(R.string.hospital_6_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_7_name), mContext.getString(R.string.hospital_7_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_8_name), mContext.getString(R.string.hospital_8_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_9_name), mContext.getString(R.string.hospital_9_detail)));
+        HOSPITALS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hospital_10_name), mContext.getString(R.string.hospital_10_detail)));
+
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_1_name), mContext.getString(R.string.hotel_1_detail)));
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_2_name), mContext.getString(R.string.hotel_2_detail)));
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_3_name), mContext.getString(R.string.hotel_3_detail)));
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_4_name), mContext.getString(R.string.hotel_4_detail)));
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_5_name), mContext.getString(R.string.hotel_5_detail)));
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_6_name), mContext.getString(R.string.hotel_6_detail)));
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_7_name), mContext.getString(R.string.hotel_7_detail)));
+        HOTELS.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.hotel_8_name), mContext.getString(R.string.hotel_8_detail)));
+
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_1_name), mContext.getString(R.string.bus_1_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_2_name), mContext.getString(R.string.bus_2_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_3_name), mContext.getString(R.string.bus_3_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_4_name), mContext.getString(R.string.bus_4_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_5_name), mContext.getString(R.string.bus_5_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_6_name), mContext.getString(R.string.bus_6_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_7_name), mContext.getString(R.string.bus_7_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_8_name), mContext.getString(R.string.bus_8_detail)));
+        BUSES.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_9_name), mContext.getString(R.string.bus_9_detail)));
     }
 
-    private static void addItem(DummyItem item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
-    }
 
-    private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
-    }
+//    private static DummyItem createDummyItem(int position) {
+//        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+//    }
 
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
+//    private static String makeDetails(int position) {
+//        StringBuilder builder = new StringBuilder();
+//        builder.append("Details about Item: ").append(position);
+//        for (int i = 0; i < position; i++) {
+//            builder.append("\nMore details information here.");
+//        }
+//        return builder.toString();
+//    }
 
     /**
      * A dummy item representing a piece of content.

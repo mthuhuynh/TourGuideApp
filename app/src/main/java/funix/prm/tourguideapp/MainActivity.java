@@ -5,6 +5,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,4 +25,5 @@ public class MainActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         return mNavigationController.navigateUp();
     }
+
 }
