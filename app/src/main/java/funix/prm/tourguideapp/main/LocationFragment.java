@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,13 +30,13 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
 
     private RecyclerView mRecyclerView;
     private LocationAdapter mLocationAdapter;
-    String[] city = {"HCM", "HN"};
+    private LocationFragmentViewModel viewModel;
+    String[] city = {"HN", "HCM"};
 
 
     public LocationFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,13 +60,16 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
         //Setting the ArrayAdapter data on the Spinner
         spin.setAdapter(aa);
 
-            return view;
+        viewModel = new ViewModelProvider(getActivity()).get(LocationFragmentViewModel.class);
+
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        LocationFragmentViewModel viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
+//        viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
+
         viewModel.getLocationData().observe(getViewLifecycleOwner(), locationList -> {
             mLocationAdapter = new LocationAdapter(getContext(), locationList, new LocationListener());
             mRecyclerView.setAdapter(mLocationAdapter);
@@ -76,13 +80,13 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
         Toast.makeText(getContext(), city[position], Toast.LENGTH_LONG).show();
-        LocationFragmentViewModel viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
+//        viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
         viewModel.setCity(city[position]);
 
     }
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
+        viewModel.setCity("HN");
     }
 
     private class LocationListener implements LocationAdapter.LocationAdapterListener {

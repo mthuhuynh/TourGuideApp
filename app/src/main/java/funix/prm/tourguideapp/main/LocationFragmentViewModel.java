@@ -15,11 +15,11 @@ import funix.prm.tourguideapp.R;
 public class LocationFragmentViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Location>> mLocationData;
-    private MutableLiveData<String> mCity;
+    private MutableLiveData<String> mCity = new MutableLiveData<String>();;
 
     public LocationFragmentViewModel(@NonNull Application application) {
         super(application);
-        mCity = new MutableLiveData<String>();
+        mCity.postValue("HN");
     }
 
     // Get Location list of data return type MutableLiveData
@@ -30,8 +30,7 @@ public class LocationFragmentViewModel extends AndroidViewModel {
     }
 
     public void setCity(String city) {
-        ;
-        mCity.postValue(city);
+        mCity.setValue(city);
 
     }
 

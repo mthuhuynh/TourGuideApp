@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.content.Context;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +37,8 @@ public class LocationDetailFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
-    private String cityLocation = "HCM";
+    private LocationFragmentViewModel viewModel;
+    private String cityLocation = "HN";
 
     public LocationDetailFragment() {
         // Required empty public constructor
@@ -57,6 +59,15 @@ public class LocationDetailFragment extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
+        viewModel = new ViewModelProvider(getActivity()).get(LocationFragmentViewModel.class);
+        viewModel.getCity().observe(getActivity(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String city) {
+                cityLocation = city;
+            }
+        });
+
     }
 
     @Override
@@ -76,10 +87,11 @@ public class LocationDetailFragment extends Fragment {
 //        viewModel.getCity().observe(requireActivity(), new Observer<String>() {
 //            @Override
 //            public void onChanged(@Nullable String city) {
-//                Toast.makeText(this,"city adapter input" + city, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getContext(),"city adapter input" + city, Toast.LENGTH_LONG).show();
 //                cityLocation = city;
 //            }
 //        });
+
 
         Location location = LocationDetailFragmentArgs.fromBundle(requireArguments()).getDetailFragmentArgs();
         DetailFragmentViewModelFactory factory = new  DetailFragmentViewModelFactory(application, location);
