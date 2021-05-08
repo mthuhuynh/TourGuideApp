@@ -72,14 +72,14 @@ public class LocationDetailFragment extends Fragment {
 
         Application application = requireActivity().getApplication();
 
-        LocationFragmentViewModel viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
-        viewModel.getCity().observe(requireActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String city) {
-                Toast.makeText(this,"city adapter input" + city, Toast.LENGTH_LONG).show();
-                cityLocation = city;
-            }
-        });
+//        LocationFragmentViewModel viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
+//        viewModel.getCity().observe(requireActivity(), new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String city) {
+//                Toast.makeText(this,"city adapter input" + city, Toast.LENGTH_LONG).show();
+//                cityLocation = city;
+//            }
+//        });
 
         Location location = LocationDetailFragmentArgs.fromBundle(requireArguments()).getDetailFragmentArgs();
         DetailFragmentViewModelFactory factory = new  DetailFragmentViewModelFactory(application, location);
