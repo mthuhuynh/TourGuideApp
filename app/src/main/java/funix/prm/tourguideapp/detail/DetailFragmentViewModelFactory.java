@@ -10,8 +10,8 @@ import funix.prm.tourguideapp.model.Location;
 
 public class DetailFragmentViewModelFactory implements ViewModelProvider.Factory {
 
-    private Application mApplication;
-    private Location mLocation;
+    private final Application mApplication;
+    private final Location mLocation;
 
     DetailFragmentViewModelFactory(Application application, Location location) {
         this.mApplication = application;

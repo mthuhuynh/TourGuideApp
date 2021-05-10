@@ -10,7 +10,7 @@ import funix.prm.tourguideapp.model.Location;
 
 class DetailFragmentViewModel extends AndroidViewModel {
 
-    private MutableLiveData<Location> selectedLocation = new MutableLiveData<>();
+    private final MutableLiveData<Location> selectedLocation = new MutableLiveData<>();
 
     DetailFragmentViewModel(@NonNull Application application, Location location) {
         super(application);

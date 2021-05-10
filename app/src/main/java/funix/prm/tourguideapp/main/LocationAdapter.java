@@ -17,9 +17,9 @@ import funix.prm.tourguideapp.model.Location;
 
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
 
-    private Context mContext;
-    private List<Location> mLocationList;
-    private LocationAdapterListener mListener;
+    private final Context mContext;
+    private final List<Location> mLocationList;
+    private final LocationAdapterListener mListener;
 
     /**
      * Constructor for our adapter class
@@ -42,20 +42,15 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
      */
     class LocationViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView mLocationImageView;
-        private TextView mLocationNameTextView;
+        private final ImageView mLocationImageView;
+        private final TextView mLocationNameTextView;
 
         LocationViewHolder(@NonNull final View itemView) {
             super(itemView);
             mLocationImageView = itemView.findViewById(R.id.location_image_item_view);
             mLocationNameTextView = itemView.findViewById(R.id.location_name_text_item_view);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mListener.onLocationSelected(mLocationList.get(getAdapterPosition()), itemView);
-                }
-            });
+            itemView.setOnClickListener(view -> mListener.onLocationSelected(mLocationList.get(getAbsoluteAdapterPosition()), itemView));
         }
     }
 

@@ -15,7 +15,7 @@ import funix.prm.tourguideapp.R;
 public class LocationFragmentViewModel extends AndroidViewModel {
 
     private MutableLiveData<List<Location>> mLocationData;
-    private MutableLiveData<String> mCity = new MutableLiveData<String>();;
+    private final MutableLiveData<String> mCity = new MutableLiveData<>();
 
     public LocationFragmentViewModel(@NonNull Application application) {
         super(application);
@@ -24,7 +24,7 @@ public class LocationFragmentViewModel extends AndroidViewModel {
 
     // Get Location list of data return type MutableLiveData
     MutableLiveData<List<Location>> getLocationData() {
-        mLocationData = new MutableLiveData<List<Location>>();
+        mLocationData = new MutableLiveData<>();
         loadAllLocations();
         return mLocationData;
     }
@@ -37,11 +37,9 @@ public class LocationFragmentViewModel extends AndroidViewModel {
     public MutableLiveData<String> getCity() {
         return mCity;
     }
-    /*
+    
+    /**
      * Hardcoded Location data which shows in our list.
-     *
-     * We can use AsyncTask to load this data in background but since this is not heavy process
-     * loading from database or internet.
      */
     private void loadAllLocations() {
         List<Location> locationList = new ArrayList<>();

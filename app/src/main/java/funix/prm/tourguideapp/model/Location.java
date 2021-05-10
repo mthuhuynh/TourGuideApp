@@ -6,9 +6,9 @@ import android.os.Parcelable;
 public class Location implements Parcelable {
 
     // Integer variable for Location images in list
-    private int mLocationImage;
+    private final int mLocationImage;
     // String variable to show name of each Location in list
-    private String mLocationName;
+    private final String mLocationName;
 
     // public constructor
     public Location(int locationImage, String locationName) {

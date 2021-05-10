@@ -2,42 +2,28 @@ package funix.prm.tourguideapp.detail;
 
 import android.app.Application;
 import android.os.Bundle;
-import android.content.Context;
-
-import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import funix.prm.tourguideapp.R;
 import funix.prm.tourguideapp.detail.dummy.DummyContent;
 import funix.prm.tourguideapp.main.LocationFragmentViewModel;
 import funix.prm.tourguideapp.model.Location;
 
-import java.util.Objects;
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LocationDetailFragment extends Fragment {
-    //list
-    // TODO: Customize parameter argument names
+
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
-    private int mColumnCount = 1;
-    private LocationFragmentViewModel viewModel;
+
     private String cityLocation = "HN";
 
     public LocationDetailFragment() {
@@ -57,15 +43,13 @@ public class LocationDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            int mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
 
-        viewModel = new ViewModelProvider(getActivity()).get(LocationFragmentViewModel.class);
-        viewModel.getCity().observe(getActivity(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String city) {
-                cityLocation = city;
-            }
+        LocationFragmentViewModel viewModel = new ViewModelProvider(getActivity()).get(LocationFragmentViewModel.class);
+        viewModel.getCity().observe(getActivity(), city -> {
+            //Change address list according to city by passing city name as param
+            cityLocation = city;
         });
 
     }
@@ -73,7 +57,6 @@ public class LocationDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_location_detail, container, false);
 
         final ImageView locationImageView = view.findViewById(R.id.detail_location_image_view);
@@ -83,66 +66,49 @@ public class LocationDetailFragment extends Fragment {
 
         Application application = requireActivity().getApplication();
 
-//        LocationFragmentViewModel viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
-//        viewModel.getCity().observe(requireActivity(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String city) {
-//                Toast.makeText(getContext(),"city adapter input" + city, Toast.LENGTH_LONG).show();
-//                cityLocation = city;
-//            }
-//        });
-
-
         Location location = LocationDetailFragmentArgs.fromBundle(requireArguments()).getDetailFragmentArgs();
         DetailFragmentViewModelFactory factory = new  DetailFragmentViewModelFactory(application, location);
-        DetailFragmentViewModel dViewModel = ViewModelProviders.of(this, factory).get(DetailFragmentViewModel.class);
+        DetailFragmentViewModel dViewModel = new ViewModelProvider(this, factory).get(DetailFragmentViewModel.class);
 
-        dViewModel.getSelectedLocation().observe(getViewLifecycleOwner(), new Observer<Location>() {
-            @Override
-            public void onChanged(Location location) {
-                locationImageView.setImageResource(location.getLocationImage());
-                locationNameTextView.setText(location.getLocationName());
+        dViewModel.getSelectedLocation().observe(getViewLifecycleOwner(), location1 -> {
+            locationImageView.setImageResource(location1.getLocationImage());
+            locationNameTextView.setText(location1.getLocationName());
 
-
-                //list
-                // Set the adapter
-                RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
-                if(cityLocation.equals("HN")) {
-                    switch (location.getLocationName()) {
-                        case "ATM":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM));
-                            break;
-                        case "Bus":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES));
-                            break;
-                        case "Hotel":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS));
-                            break;
-                        case "Hospital":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS));
-                            break;
-                    }
-                } else if(cityLocation.equals("HCM")){
-                    switch (location.getLocationName()) {
-                        case "ATM":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM_HCM));
-                            break;
-                        case "Bus":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES_HCM));
-                            break;
-                        case "Hotel":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS_HCM));
-                            break;
-                        case "Hospital":
-                            recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS_HCM));
-                            break;
-                    }
+            // Set the adapter
+            RecyclerView recyclerView = view.findViewById(R.id.list);
+            if(cityLocation.equals("HN")) {
+                switch (location1.getLocationName()) {
+                    case "ATM":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM));
+                        break;
+                    case "Bus":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES));
+                        break;
+                    case "Hotel":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS));
+                        break;
+                    case "Hospital":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS));
+                        break;
+                }
+            } else if(cityLocation.equals("HCM")){
+                switch (location1.getLocationName()) {
+                    case "ATM":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.ATM_HCM));
+                        break;
+                    case "Bus":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.BUSES_HCM));
+                        break;
+                    case "Hotel":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOTELS_HCM));
+                        break;
+                    case "Hospital":
+                        recyclerView.setAdapter(new AddressRecyclerViewAdapter(DummyContent.HOSPITALS_HCM));
+                        break;
                 }
             }
         });
 
-
         return view;
     }
-
 }

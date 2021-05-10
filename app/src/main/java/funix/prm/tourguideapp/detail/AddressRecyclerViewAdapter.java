@@ -14,7 +14,6 @@ import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link DummyItem}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class AddressRecyclerViewAdapter extends RecyclerView.Adapter<AddressRecyclerViewAdapter.ViewHolder> {
 
@@ -43,7 +42,7 @@ public class AddressRecyclerViewAdapter extends RecyclerView.Adapter<AddressRecy
         return mValues.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
         public final TextView mDetailView;
@@ -52,8 +51,8 @@ public class AddressRecyclerViewAdapter extends RecyclerView.Adapter<AddressRecy
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mContentView = (TextView) view.findViewById(R.id.content);
-            mDetailView = (TextView) view.findViewById(R.id.detail);
+            mContentView = (TextView) view.findViewById(R.id.location_detail_fragment_tv_content);
+            mDetailView = (TextView) view.findViewById(R.id.location_detail_fragment_tv_detail);
         }
 
         @Override

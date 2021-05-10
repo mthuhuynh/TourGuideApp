@@ -12,8 +12,6 @@ import funix.prm.tourguideapp.R;
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
- * <p>
- * TODO: Replace all uses of this class before publishing your app.
  */
 public class DummyContent {
     /**
@@ -30,7 +28,7 @@ public class DummyContent {
     public static final List<DummyItem> BUSES_HCM = new ArrayList<>();
 
     /**
-     * A map of sample (dummy) items, by ID.
+     * A map of sample (dummy) items.
      */
     public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
     private Context mContext;
@@ -98,20 +96,6 @@ public class DummyContent {
         BUSES_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_hcm_2_name), mContext.getString(R.string.bus_hcm_2_detail)));
         BUSES_HCM.add(new DummyItem(String.valueOf(1),mContext.getString(R.string.bus_hcm_3_name), mContext.getString(R.string.bus_hcm_3_detail)));
     }
-
-
-//    private static DummyItem createDummyItem(int position) {
-//        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
-//    }
-
-//    private static String makeDetails(int position) {
-//        StringBuilder builder = new StringBuilder();
-//        builder.append("Details about Item: ").append(position);
-//        for (int i = 0; i < position; i++) {
-//            builder.append("\nMore details information here.");
-//        }
-//        return builder.toString();
-//    }
 
     /**
      * A dummy item representing a piece of content.

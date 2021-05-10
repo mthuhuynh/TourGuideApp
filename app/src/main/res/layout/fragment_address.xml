@@ -5,24 +5,24 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/content"
+        android:id="@+id/location_detail_fragment_tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginTop="@dimen/padding_margin"
         android:background="@color/grey"
-        android:paddingLeft="@dimen/text_margin"
-        android:paddingTop="@dimen/text_margin"
-        android:paddingRight="@dimen/text_margin"
+        android:paddingLeft="@dimen/padding_margin"
+        android:paddingTop="@dimen/padding_margin"
+        android:paddingRight="@dimen/padding_margin"
         android:textAppearance="?attr/textAppearanceListItem"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/detail"
+        android:id="@+id/location_detail_fragment_tv_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/grey"
-        android:paddingLeft="@dimen/text_margin"
-        android:paddingRight="@dimen/text_margin"
-        android:paddingBottom="@dimen/text_margin"
+        android:paddingLeft="@dimen/padding_margin"
+        android:paddingRight="@dimen/padding_margin"
+        android:paddingBottom="@dimen/padding_margin"
         android:textAppearance="?attr/textAppearanceListItem" />
 </LinearLayout>

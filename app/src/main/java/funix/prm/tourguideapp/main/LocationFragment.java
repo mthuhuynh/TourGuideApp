@@ -51,7 +51,7 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
         mRecyclerView = view.findViewById(R.id.location_recycler_view);
 
         //Getting the instance of Spinner and applying OnItemSelectedListener on it
-        Spinner spin = (Spinner) view.findViewById(R.id.spinner);
+        Spinner spin = (Spinner) view.findViewById(R.id.location_fragment_spinner);
         spin.setOnItemSelectedListener(this);
 
         //Creating the ArrayAdapter instance having the country list
@@ -79,7 +79,7 @@ public class LocationFragment extends Fragment implements AdapterView.OnItemSele
     //Performing action onItemSelected and onNothing selected
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        Toast.makeText(getContext(), city[position], Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(), city[position], Toast.LENGTH_LONG).show();
 //        viewModel = ViewModelProviders.of(this).get(LocationFragmentViewModel.class);
         viewModel.setCity(city[position]);
 
